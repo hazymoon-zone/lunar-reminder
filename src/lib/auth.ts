@@ -7,7 +7,7 @@ import {
 } from 'astro:env/server'
 import { betterAuth } from 'better-auth'
 import { drizzleAdapter } from 'better-auth/adapters/drizzle'
-import { db } from '../db/index.ts'
+import { db } from '../db'
 import * as schema from '../db/schema.ts'
 
 export const auth = betterAuth({
@@ -24,6 +24,16 @@ export const auth = betterAuth({
     google: {
       clientId: GOOGLE_CLIENT_ID,
       clientSecret: GOOGLE_CLIENT_SECRET
+    }
+  },
+  databaseHooks: {
+    user: {
+      create: {
+        before: async (user) => {
+          const allowedEmails = getAllowedEmails()
+          return allowedEmails.includes(user.email)
+        }
+      }
     }
   }
 })
