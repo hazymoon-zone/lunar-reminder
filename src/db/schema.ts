@@ -115,7 +115,7 @@ export const reminder = pgTable('reminder', {
     .$defaultFn(() => crypto.randomUUID()),
   title: text('title').notNull(),
   reminderDate: date('reminder_date', { mode: 'date' }).notNull(),
-  nextAlertDate: date('next_reminder_date', { mode: 'date' }),
+  nextAlertDate: date('next_alert_date', { mode: 'date' }),
   userId: text('user_id')
     .notNull()
     .references(() => user.id, { onDelete: 'cascade' }),

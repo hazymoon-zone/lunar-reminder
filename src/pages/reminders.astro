@@ -25,7 +25,7 @@ const reminderCards = reminders.map((reminder) => {
   now.setHours(0, 0, 0, 0)
 
   const dueIn = Math.floor(
-    (reminder.nextAlertDate!.getTime() - now.getTime()) / 86400000
+    (reminder.nextAlertDate.getTime() - now.getTime()) / 86400000
   ) // Days
 
   if (dueIn === 0) {

@@ -19,7 +19,10 @@ export function getNextAlertDate(
   const now = new Date()
   const lunarNow = Lunar.fromDate(now)
 
-  if (lunar >= lunarNow) return solarToDate(lunar.getSolar())
+  const lunarTime = solarToDate(lunar.getSolar()).getTime()
+  const nowTime = solarToDate(lunarNow.getSolar()).getTime()
+
+  if (lunarTime >= nowTime) return solarToDate(lunar.getSolar())
 
   if (repeat === ZRepeatOption.enum.yearly) {
     const lunarNextYear = getLunarNextYear(lunar)
