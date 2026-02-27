@@ -75,7 +75,7 @@ export function getLunarNextMonth(lunar: Lunar): Lunar | null {
   const now = new Date()
   const currentYear = now.getUTCFullYear()
   const currentMonth = now.getUTCMonth()
-  const targetMonth = currentMonth + 1
+  const targetMonth = currentMonth + 2
   const day = lunar.getDay()
   // Try to create the date. If it fails (e.g. 30th day in a 29-day month),
   // then we decide there is no equivalent date in the next month.
