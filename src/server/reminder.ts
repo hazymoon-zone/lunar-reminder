@@ -1,5 +1,5 @@
 import { Lunar } from 'lunar-typescript'
-import type { InsertReminder, UpdateReminder } from '../db/schema.ts'
+import type { InsertReminder, UpdateReminder } from '../db/schemas/app.ts'
 import {
   dateToLunar,
   getLunarCurrentMonth,

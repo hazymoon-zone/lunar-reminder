@@ -3,7 +3,7 @@ import {
   REPEAT_FREQUENCIES,
   ZInsertReminder,
   ZSelectReminder
-} from '../db/schema.ts'
+} from '../db/schemas/app.ts'
 
 export const ZRepeatOption = z.enum(REPEAT_FREQUENCIES)
 
