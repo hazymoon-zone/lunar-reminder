@@ -6,7 +6,7 @@ import {
   updateReminder,
   updateReminderAlert
 } from '../db/reminder.ts'
-import { ZUpdateAlert, ZUpdateReminder } from '../db/schema.ts'
+import { ZUpdateAlert, ZUpdateReminder } from '../db/schemas/app.ts'
 import { auth } from '../lib/auth.ts'
 import { ZApiCreateReminder } from '../models/index.ts'
 import { getNextAlertDate } from './reminder.ts'

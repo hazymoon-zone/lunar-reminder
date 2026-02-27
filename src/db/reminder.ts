@@ -8,7 +8,7 @@ import {
   type SelectReminder,
   type UpdateAlert,
   type UpdateReminder
-} from './schema.ts'
+} from './schemas/app.ts'
 
 export async function getReminders(userId: string): Promise<SelectReminder[]> {
   const result = await db

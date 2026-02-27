@@ -3,7 +3,7 @@ import { readFile } from 'node:fs/promises'
 import { join } from 'node:path'
 import process from 'node:process'
 import { getReminders } from '../db/reminder.ts'
-import type { SelectReminder } from '../db/schema.ts'
+import type { SelectReminder } from '../db/schemas/app.ts'
 
 type EntryFilter = {
   id: string
