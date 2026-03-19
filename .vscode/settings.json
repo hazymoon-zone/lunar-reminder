@@ -1,14 +1,12 @@
 {
   "editor.formatOnSave": true,
-  "editor.defaultFormatter": "astro-build.astro-vscode",
+  "editor.formatOnSaveMode": "file",
+  "editor.defaultFormatter": "oxc.oxc-vscode",
   "editor.tabSize": 2,
-  "[markdown]": {
-    "editor.defaultFormatter": "denoland.vscode-deno"
-  },
   "[typescript]": {
-    "editor.defaultFormatter": "denoland.vscode-deno"
+    "editor.defaultFormatter": "oxc.oxc-vscode"
   },
-  "[javascript]": {
-    "editor.defaultFormatter": "denoland.vscode-deno"
+  "[astro]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   }
 }
