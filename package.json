@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "astro dev",
-    "build": "tsc && vp build",
+    "build": "astro build",
     "preview": "vp preview"
   },
   "dependencies": {

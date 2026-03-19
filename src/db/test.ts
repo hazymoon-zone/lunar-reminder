@@ -1,7 +1,7 @@
 import { Pool } from "@neondatabase/serverless";
 import { DATABASE_URL } from "astro:env/server";
-import { drizzle } from "drizzle-orm/neon-serverless";
 import type { NeonDatabase } from "drizzle-orm/neon-serverless";
+import { drizzle } from "drizzle-orm/neon-serverless";
 
 export type TestDbTransaction = NeonDatabase<Record<string, never>>;
 

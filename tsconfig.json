@@ -1,4 +1,6 @@
 {
+  "extends": "astro/tsconfigs/strict",
+  "exclude": ["dist"],
   "compilerOptions": {
     "target": "ES2023",
     "useDefineForClassFields": true,
@@ -22,5 +24,5 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true
   },
-  "include": ["src"]
+  "include": [".astro/types.d.ts", "src"]
 }

@@ -6,10 +6,11 @@ Tech Stack:
 - Astro V5
 - Tailwind CSS
 - DaisyUI
-- Deno
+- Vite+
 - Better Auth for authentication, only use Google OAuth Sign In
 - Hono for backend API
 - Drizzle for ORM
+- Cloudflare for deployment
 
 Work approach:
 
