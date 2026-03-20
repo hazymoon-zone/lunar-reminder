@@ -28,7 +28,7 @@
    * https://developers.cloudflare.com/workers/configuration/secrets/
    */
   "vars": {
-    "GOOGLE_CLIENT_ID": "sandbox61f06c2cd73a44b88b57acd22c82979d.mailgun.org",
+    "GOOGLE_CLIENT_ID": "947201949690-07md76h8b3cogjgpeq0qcsbg74a922a2.apps.googleusercontent.com",
     "APP_URL": "https://lunar-reminder.hazymoon.workers.dev",
   },
   /**
