@@ -1,3 +1,0 @@
-name = "lunar-reminder"
-compatibility_date = "2026-03-19"
-compatibility_flags = ["nodejs_compat"]
