@@ -4,7 +4,6 @@ import {
   dateToLunar,
   getLunarCurrentMonth,
   getLunarCurrentYear,
-  getLunarNextMonth,
   getLunarNextYear,
   lunarToDate,
   solarToDate,
@@ -65,20 +64,11 @@ describe("lunar.ts", () => {
   it("builds lunar current month from current UTC month", () => {
     const source = Lunar.fromYmd(2024, 3, 9);
     const result = getLunarCurrentMonth(source);
+    const now = new Date();
 
     expect(result).not.toBeNull();
-    expect(result?.getYear()).toBe(2026);
-    expect(Math.abs(result?.getMonth() ?? 0)).toBe(2);
-    expect(result?.getDay()).toBe(9);
-  });
-
-  it("builds lunar next month from current UTC month + 1", () => {
-    const source = Lunar.fromYmd(2024, 3, 9);
-    const result = getLunarNextMonth(source);
-
-    expect(result).not.toBeNull();
-    expect(result?.getYear()).toBe(2026);
-    expect(Math.abs(result?.getMonth() ?? 0)).toBe(3);
+    expect(result?.getYear()).toBe(now.getUTCFullYear());
+    expect(Math.abs(result?.getMonth() ?? 0)).toBe(now.getUTCMonth());
     expect(result?.getDay()).toBe(9);
   });
 });

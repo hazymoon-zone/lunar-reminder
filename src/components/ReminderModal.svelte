@@ -72,7 +72,7 @@
 
     if (reminder.id) {
       updateReminder()
-      return 
+      return
     }
 
     createReminder()

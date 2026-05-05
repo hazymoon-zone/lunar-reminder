@@ -59,28 +59,13 @@ export function getLunarNextYear(lunar: Lunar): Lunar | null {
 export function getLunarCurrentMonth(lunar: Lunar): Lunar | null {
   const now = new Date();
   const year = now.getUTCFullYear();
-  const month = now.getUTCMonth() + 1;
+  const month = now.getUTCMonth();
   const day = lunar.getDay();
 
   // Try to create the date. If it fails (e.g. 30th day in a 29-day month),
   // then we decide there is no equivalent date in the next month.
   try {
     return Lunar.fromYmd(year, month, day);
-  } catch {
-    return null;
-  }
-}
-
-export function getLunarNextMonth(lunar: Lunar): Lunar | null {
-  const now = new Date();
-  const currentYear = now.getUTCFullYear();
-  const currentMonth = now.getUTCMonth();
-  const targetMonth = currentMonth + 2;
-  const day = lunar.getDay();
-  // Try to create the date. If it fails (e.g. 30th day in a 29-day month),
-  // then we decide there is no equivalent date in the next month.
-  try {
-    return Lunar.fromYmd(currentYear, targetMonth, day);
   } catch {
     return null;
   }
