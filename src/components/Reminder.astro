@@ -1,5 +1,4 @@
 ---
-import sanitizeHtml from "sanitize-html";
 import CheckIcon from "../assets/icons/check.svg";
 import DeleteIcon from "../assets/icons/delete.svg";
 import EditIcon from "../assets/icons/edit.svg";
@@ -63,8 +62,9 @@ const alert = alertEntries?.[0]?.data;
           reminder.nextAlertDate && (
             <span>
               Next Alert Date: Lunar
-              {reminder.nextAlertDateLunar?.toLocaleDateString("en-GB")}
-              (Gregorian: {reminder.nextAlertDate?.toLocaleDateString("en-GB")})
+              {reminder.nextAlertDate?.toLocaleDateString("en-GB")}
+              (Gregorian:{" "}
+              {reminder.nextAlertDateSolar?.toLocaleDateString("en-GB")})
             </span>
           )
         }

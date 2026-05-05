@@ -1,6 +1,6 @@
 import { Lunar } from "lunar-typescript";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vite-plus/test";
-import { solarToDate } from "../lib/lunar.ts";
+import { lunarToDate } from "../lib/lunar.ts";
 import { getNextAlertDate } from "./reminder.ts";
 
 type ReminderInput = {
@@ -27,7 +27,7 @@ function makeReminder(overrides: Partial<ReminderInput> = {}): ReminderInput {
 describe("getNextAlertDate", () => {
   beforeEach(() => {
     vi.useFakeTimers();
-    vi.setSystemTime(new Date(Date.UTC(2026, 1, 27, 12, 0, 0)));
+    vi.setSystemTime(new Date(Date.UTC(2026, 3, 7, 12, 0, 0)));
   });
 
   afterEach(() => {
@@ -62,7 +62,7 @@ describe("getNextAlertDate", () => {
     const result = getNextAlertDate(reminder as never);
 
     expect(result).toBeDefined();
-    expect(result?.getTime()).toBe(solarToDate(reminderLunar.getSolar()).getTime());
+    expect(result?.getTime()).toBe(lunarToDate(reminderLunar).getTime());
   });
 
   it("returns undefined for past non-repeating reminder", () => {
