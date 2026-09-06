@@ -38,7 +38,13 @@ const routes = app
   .post("/reminders", zValidator("json", ZApiCreateReminder), async (c) => {
     try {
       const reminder = c.req.valid("json");
-      const nextAlertDate = getNextAlertDate(reminder);
+      let nextAlertDate = null;
+      try {
+        nextAlertDate = getNextAlertDate(reminder);
+      } catch (error) {
+        console.error("Error calculating next alert date:", error);
+        return c.json({ error: (error as Error).message }, 400);
+      }
 
       const insertReminderData = {
         ...reminder,
@@ -59,9 +65,15 @@ const routes = app
     try {
       const reminder = c.req.valid("json");
       let updateReminderData = reminder;
+
       if (reminder.reminderDate) {
-        const nextAlertDate = getNextAlertDate(reminder);
-        updateReminderData = { ...reminder, nextAlertDate };
+        try {
+          const nextAlertDate = getNextAlertDate(reminder);
+          updateReminderData = { ...reminder, nextAlertDate };
+        } catch (error) {
+          console.error("Error calculating next alert date:", error);
+          return c.json({ error: (error as Error).message }, 400);
+        }
       }
       await updateReminder(id, c.get("user").id, updateReminderData);
 
