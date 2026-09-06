@@ -21,7 +21,7 @@ export function getNextAlertDate(reminder: InsertReminder | UpdateReminder): Dat
 
   const lunarTime = solarToDate(lunar.getSolar()).getTime();
 
-  if (lunarTime >= nowTime) return lunarToDate(lunar);
+  if (lunarTime >= nowTime) return reminderDate;
 
   if (repeat === ZRepeatOption.enum.yearly) {
     return getNextAlertDateYearly(lunar);
