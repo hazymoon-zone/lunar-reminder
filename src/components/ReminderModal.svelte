@@ -1,11 +1,12 @@
 <script lang="ts">
-  import { hc } from 'hono/client'
-  import { onMount } from "svelte"
-  import { ZInsertReminder, type InsertReminder } from "../db/schemas/app.ts"
-  import { sanitizeMailBody } from '../lib/mail.ts'
-  import type { AppType } from "../server/index.ts"
-  import ReminderForm from "./ReminderForm.svelte"
-  import SaveIcon from "./SaveIcon.svelte"
+  import { hc } from 'hono/client';
+  import { onMount } from "svelte";
+  import { ZInsertReminder, type InsertReminder } from "../db/schemas/app.ts";
+  import { sanitizeMailBody } from '../lib/mail.ts';
+  import { showToast } from "../lib/toast.ts";
+  import type { AppType } from "../server/index.ts";
+  import ReminderForm from "./ReminderForm.svelte";
+  import SaveIcon from "./SaveIcon.svelte";
 
   let reminder: InsertReminder = $state({
     title: "",
@@ -38,11 +39,16 @@
         json: reminder
       })
 
-      if (!res.ok) throw new Error('Failed to create reminder')
+      if (!res.ok) {
+        const json = await res.json()
+        const error = 'error' in json ? json.error : 'Failed to create reminder'
+        throw new Error(error)
+      }
 
       window.location.reload()
     } catch (error) {
       console.error(error)
+      showToast({ type: "error", message: String(error) })
       isSaving = false
     }
   }
@@ -58,11 +64,16 @@
         json: reminder
       })
 
-      if (!res.ok) throw new Error('Failed to update reminder')
+      if (!res.ok) {
+        const json = await res.json()
+        const error = 'error' in json ? json.error : 'Failed to update reminder'
+        throw new Error(error)
+      }
 
       window.location.reload()
     } catch (error) {
       console.error(error)
+      showToast({ type: "error", message: String(error) })
       isSaving = false
     }
   }
