@@ -1,6 +1,7 @@
 <script lang="ts">
   import { onMount } from 'svelte'
   import { authClient } from '../lib/auth-client.ts'
+  import { showToast } from "../lib/toast.ts"
   import MailIcon from './MailIcon.svelte'
   import SaveIcon from './SaveIcon.svelte'
 
@@ -21,6 +22,7 @@
       location.reload()
     } catch (error) {
       console.error(error)
+      showToast({ type: "error", message: "Failed to create user" })
       isSaving = false
     }
   }

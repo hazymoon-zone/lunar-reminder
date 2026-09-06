@@ -140,6 +140,7 @@ const alert = alertEntries?.[0]?.data;
 
 <script>
   import { hc } from "hono/client";
+  import { showToast } from "../lib/toast.ts";
   import type { AppType } from "../server/index.ts";
 
   const client = hc<AppType>("/");
@@ -180,6 +181,7 @@ const alert = alertEntries?.[0]?.data;
           location.reload();
         } catch (err) {
           console.error(err);
+          showToast({ type: "error", message: "Failed to delete reminder" });
           btnDelete.disabled = false;
         }
       });
@@ -207,6 +209,7 @@ const alert = alertEntries?.[0]?.data;
           location.reload();
         } catch (err) {
           console.error(err);
+          showToast({ type: "error", message: "Failed to acknowledge alert" });
           btnAcknowledge.disabled = false;
         }
       });

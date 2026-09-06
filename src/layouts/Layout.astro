@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+import ToastHost from "../components/ToastHost.svelte";
 
 interface Props {
   title?: string;
@@ -27,6 +28,7 @@ const {
   </head>
   <body>
     <slot />
+    <ToastHost client:load />
   </body>
 
   <style>

@@ -45,6 +45,7 @@ const isAdmin = user.role === "admin" || false;
 
 <script>
   import { authClient } from "../lib/auth-client.ts";
+  import { showToast } from "../lib/toast.ts";
 
   const userListItems = document.querySelectorAll(
     ".user",
@@ -69,6 +70,7 @@ const isAdmin = user.role === "admin" || false;
           location.reload();
         } catch (err) {
           console.error(err);
+          showToast({ type: "error", message: "Failed to delete user" });
           btnDelete.disabled = false;
         }
       });
